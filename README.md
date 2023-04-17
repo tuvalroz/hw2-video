@@ -9,7 +9,7 @@ This example demonstrates a website, which shows posts for many users. Some exam
 
 
 
-## Prerequirements
+## Prerequisites
 -Prisma: To understand how to use the Prisma mySQL database, 
 it is recommended to open a new directory, and go through the prisma database tutorial below
 -Git: get the basics:
