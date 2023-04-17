@@ -12,12 +12,13 @@ This example demonstrates a website, which shows posts for many users. Some exam
 ## Prerequirements
 -Prisma: To understand how to use the Prisma mySQL database, 
 it is recommended to open a new directory, and go through the prisma database tutorial below
--Git: understand its [basics]():
---what is a repository. 
---how to clone it.
---make edits to it.
---and push it to a new repository owned by you.
---Anything else, i.e. branches, is good to know but not a must.
+-Git: get the basics:
+1. what is a repository. 
+2. how to clone it.
+3. make edits to it.
+4. Push it to a new repository owned by you.
+5. Anything else, i.e. branches, is good to know but not a must.
+
 links: [atlassian](https://www.atlassian.com/git/tutorials/setting-up-a-repository) and [git-guide](https://rogerdudler.github.io/git-guide/).
 . [prisma database tutorial](https://www.prisma.io/docs/getting-started/quickstart).
 
