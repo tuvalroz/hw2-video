@@ -1,15 +1,34 @@
-# Fullstack Authentication Example with Next.js and NextAuth.js
-
-Forked from [Prisma Examples](https://github.com/prisma/prisma-examples/tree/latest/typescript/rest-nextjs-api-routes-auth) [Michael Elhadad / March 2023]
-
-- Changed tsconfig.json to strict
-- Fixed compilation warnings caused by strict
-- Added .markdownling.json
+## Intro
+This is an example of a blog website. Use cases:
+1. Authenticate with [oAuth](https://www.youtube.com/watch?v=KT8ybowdyr0) in front of Github.
+2. Get a list of posts from an external database.
+3. Some posts are private drafts, and can only be seen by the author.
+4. Some posts are public, and can be seen by all users.
 
 This example shows how to implement a **fullstack app in TypeScript with [Next.js](https://nextjs.org/)** using [React](https://reactjs.org/) (frontend), [Next.js API routes](https://nextjs.org/docs/api-routes/introduction) and [Prisma Client](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client) (backend). It also demonstrates how to implement authentication using [NextAuth.js](https://next-auth.js.org/). The example uses an SQLite database file with some initial dummy data which you can find at [`./prisma/dev.db`](./prisma/dev.db).
 
-Note that the app uses a mix of server-side rendering with `getServerSideProps` (SSR) and static site generation with `getStaticProps` (SSG). When possible, SSG is used to make database queries already at build-time (e.g. when fetching the [public feed](./pages/index.tsx)). Sometimes, the user requesting data needs to be authenticated, so SSR is being used to render data dynamically on the server-side
-(e.g., when viewing a user's [drafts](./pages/drafts.tsx)).
+## Prerequirements
+
+-Prisma: To understand how to use the Prisma mySQL database, 
+it is recommended to open a new directory, and go through the [prisma database tutorial](https://www.prisma.io/docs/getting-started/quickstart).
+-Git: understand its [basics](https://rogerdudler.github.io/git-guide/):
+--what is a repository. 
+--how to clone it.
+--make edits to it.
+--and push it to a new repository owned by you.
+
+-Github: the hw1 will be submitted via github. Please open a user for your BGU email address, at:
+https://github.com/
+
+and be able to securely update files from your machine, by ssh authentication:
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys 
+
+
+## The task
+The task is to add [pagination](https://www.w3schools.com/css/css3_pagination.asp) to the website.
+In order to test that your implementation works, you'll also have to populate your databases with fake posts.
+
+This app contains material that we haven't seen yet in class, such as server side rendering, and static site generation.
 
 ## Getting started
 
