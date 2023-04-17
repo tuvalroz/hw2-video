@@ -25,6 +25,8 @@ links: [atlassian](https://www.atlassian.com/git/tutorials/setting-up-a-reposito
 
 and be able to securely update files from your machine, by ssh authentication:
 https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys 
+or using oauth:
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
 This app contains material that we haven't seen yet in class, and that is not needed to complete this task:
 such as server side rendering, and static site generation, dynamic routing and oAuth.
