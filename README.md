@@ -11,16 +11,17 @@ This example demonstrates a website, which shows posts for many users. Some exam
 
 ## Prerequirements
 -Prisma: To understand how to use the Prisma mySQL database, 
-it is recommended to open a new directory, and go through the [prisma database tutorial](https://www.prisma.io/docs/getting-started/quickstart).
--Git: understand its [basics](https://rogerdudler.github.io/git-guide/):
+it is recommended to open a new directory, and go through the prisma database tutorial below
+-Git: understand its [basics]():
 --what is a repository. 
 --how to clone it.
 --make edits to it.
 --and push it to a new repository owned by you.
 --Anything else, i.e. branches, is good to know but not a must.
+links: [atlassian](https://www.atlassian.com/git/tutorials/setting-up-a-repository) and [git-guide](https://rogerdudler.github.io/git-guide/).
+. [prisma database tutorial](https://www.prisma.io/docs/getting-started/quickstart).
 
--Github: the hw1 will be submitted via github. Please open a user with your BGU email address, at:
-https://github.com/
+-Github: the hw1 will be submitted via github. Please open a user with your BGU email address, at: https://github.com/
 
 and be able to securely update files from your machine, by ssh authentication:
 https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys 
