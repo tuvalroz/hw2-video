@@ -1,9 +1,11 @@
-## Submission:
+## Submission: 
 1. Submission is in couples (But please start by doing it alone).
 2. Coding: 70%, Questions: 30%.
 3. Your submitted should be *private*, please make barashd@post.bgu.ac.il a collaborator.
 4. Do not use external libraries that provide the pagination component for you. If in doubt, contact the staff.
-5. Deadline: 06/05/2023.
+5. Deadline: 06/05/2023, end of day.
+6. Additional, solve the [theoretical questions]( https://forms.gle/oPgpWcCSrcAN47QMA)
+
 
 ## The task
 The task is to add [pagination](https://www.w3schools.com/css/css3_pagination.asp) to the website:
@@ -28,7 +30,7 @@ This example demonstrates a website, which shows posts for many users. Some exam
 To understand how to use the Prisma mySQL database, 
 it is recommended to open a new directory and go through the Prisma database tutorial below,
 notice the Prisma Studio tool.
-###Git
+### Git
 
 1. What is a repository.
 2. How to clone it.
@@ -63,35 +65,17 @@ such as server-side rendering, static site generation, dynamic routing, and OAut
 
 ### 1. Download the example and install dependencies
 
-Download this example:
 
 ```bash
-npx try-prisma@latest --template typescript/rest-nextjs-api-routes-auth
+git clone git@github.com:bgu-frontend/hw1-blog.git
 ```
 
 Install npm dependencies:
 
 ```bash
-cd rest-nextjs-api-routes-auth
+cd hw1-blog
 npm install
 ```
-
-<details><summary><strong>Alternative:</strong> Clone the entire repo</summary>
-
-Clone this repository:
-
-```bash
-git clone git@github.com:prisma/prisma-examples.git --depth=1
-```
-
-Install npm dependencies:
-
-```bash
-cd prisma-examples/typescript/rest-nextjs-api-routes-auth
-npm install
-```
-
-</details>
 
 ### 2. Create and seed the database
 
