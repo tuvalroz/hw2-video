@@ -1,3 +1,17 @@
+## Submission:
+1. Submission is in couples (But please start by doing it alone).
+2. Coding: 70%, Questions: 30%.
+3. Your submitted should be *private*, please make barashd@post.bgu.ac.il a collaborator.
+4. Do not use external libraries that provide the pagination component for you. If in doubt, contact the staff.
+5. Deadline: 06/05/2023.
+
+## The task
+The task is to add [pagination](https://www.w3schools.com/css/css3_pagination.asp) to the website:
+1. Populate your database with 1 million fake examples.(See example in 'prisma/seed.ts')
+2. Front end component: show 10 posts on each page.
+3. Updating the backend query to the database (see relevant reading material below)
+4. To test that your implementation works, you'll also have to populate your databases with fake posts. 
+
 ## Intro
 This example shows how to implement a **fullstack app in TypeScript with [Next.js](https://nextjs.org/)** using [React](https://reactjs.org/) (frontend), [Next.js API routes](https://nextjs.org/docs/api-routes/introduction) and [Prisma Client](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client) (backend). It also demonstrates how to implement authentication using [NextAuth.js](https://next-auth.js.org/). The example uses an SQLite database file with some initial dummy data which you can find at [`./prisma/dev.database`](./prisma/dev.database).
 
@@ -12,7 +26,8 @@ This example demonstrates a website, which shows posts for many users. Some exam
 ## Prerequisites
 ### Prisma
 To understand how to use the Prisma mySQL database, 
-it is recommended to open a new directory and go through the Prisma database tutorial below
+it is recommended to open a new directory and go through the Prisma database tutorial below,
+notice the Prisma Studio tool.
 ###Git
 
 1. What is a repository.
@@ -43,11 +58,6 @@ https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/c
 This app contains material that we haven't seen yet in class, and that is not needed to complete this task:
 such as server-side rendering, static site generation, dynamic routing, and OAuth.
 
-## The task
-The task is to add [pagination](https://www.w3schools.com/css/css3_pagination.asp) to the website, with 10 posts on each page.
-To test that your implementation works, you'll also have to populate your databases with fake posts. (See example in 'prisma/seed.ts')
-You can assume that number of posts is <= 1 million.
-Please note there is a theoretical part as well below. 
 
 ## Getting started
 
@@ -137,11 +147,6 @@ The app is now running, navigate to [`http://localhost:3000/`](http://localhost:
 
 - Create issues and ask questions on [GitHub](https://github.com/bgu-frontend/hw1-blog/issues) or in [Moodle](https://moodle.bgu.ac.il/moodle/mod/forum/view.php?id=2453924).
 
-### Submission:
-1. Submission is in couples (But please start by doing it alone).
-2. Coding: 70%, Questions: 30%.
-3. Your submitted should be *private*, please make barashd@post.bgu.ac.il a collaborator.
-
 ## Checking the coding task:
 
 The tester will:
@@ -151,6 +156,8 @@ The tester will:
 4. Manually test that the pages show correctly, by testing a few pages and see that they appear correctly.
 
 There are going to be 5 pass/no pass tests for this part.
+
+
 
 ## Good luck!
 
