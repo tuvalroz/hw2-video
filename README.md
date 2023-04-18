@@ -10,7 +10,8 @@ This example demonstrates a website, which shows posts for many users. Some exam
 
 
 ## Prerequisites
--Prisma: To understand how to use the Prisma mySQL database, 
+### Prisma
+To understand how to use the Prisma mySQL database, 
 it is recommended to open a new directory, and go through the prisma database tutorial below
 -Git: get the basics:
 1. what is a repository. 
@@ -19,13 +20,16 @@ it is recommended to open a new directory, and go through the prisma database tu
 4. Push it to a new repository owned by you.
 5. Anything else, i.e. branches, is good to know but not a must.
 
-links: [atlassian](https://www.atlassian.com/git/tutorials/setting-up-a-repository) and [git-guide](https://rogerdudler.github.io/git-guide/).
-. [prisma database tutorial](https://www.prisma.io/docs/getting-started/quickstart).
+### Links
+1. [atlassian](https://www.atlassian.com/git/tutorials/setting-up-a-repository)
+2. [git-guide](https://rogerdudler.github.io/git-guide/)
+3. [prisma database tutorial](https://www.prisma.io/docs/getting-started/quickstart)
 
--Github: the hw1 will be submitted via github. Please open a user with your BGU email address, at: https://github.com/
-
-and be able to securely update files from your machine, by ssh authentication:
+### Github 
+Hw1 will be submitted via github. Please open a user with your BGU email address.
+To securely update files from your machine by ssh authentication:
 https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys 
+
 or using oauth:
 https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
@@ -36,6 +40,7 @@ such as server side rendering, and static site generation, dynamic routing and o
 The task is to add [pagination](https://www.w3schools.com/css/css3_pagination.asp) to the website, with 10 posts in each page.
 In order to test that your implementation works, you'll also have to populate your databases with fake posts. (See example in 'prisma/seed.ts')
 You can assume that number of posts is <= 1million.
+Please note there is a theoretical part as well below. 
 
 ## Getting started
 
@@ -124,3 +129,23 @@ npm run dev
 The app is now running, navigate to [`http://localhost:3000/`](http://localhost:3000/) in your browser to explore its UI.
 
 - Create issues and ask questions on [GitHub](https://github.com/bgu-frontend/hw1-blog/issues) or in Moodle.
+
+### Submission:
+1. Submission is in couples (But please start by do it alone).
+2. Coding: 70%, Questions: 30%.
+3. Your submitted should be *private*, please make barashd@post.bgu.ac.il a collaborator.
+
+## Checking the coding task:
+
+The tester will:
+1. Clone your submitted repo.
+2. Run the starter scripts.
+3. The tester will fill the db with fake records: it could be empty, small, large (<=1mil) db. 
+4. Manually test that the pages show correctly, by testing a few pages and see that they appear correctly.
+
+There are going to be 5 pass/no pass tests for this part.
+
+## Good luck!
+
+
+
