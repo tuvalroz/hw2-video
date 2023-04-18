@@ -1,50 +1,57 @@
 ## Intro
-This example shows how to implement a **fullstack app in TypeScript with [Next.js](https://nextjs.org/)** using [React](https://reactjs.org/) (frontend), [Next.js API routes](https://nextjs.org/docs/api-routes/introduction) and [Prisma Client](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client) (backend). It also demonstrates how to implement authentication using [NextAuth.js](https://next-auth.js.org/). The example uses an SQLite database file with some initial dummy data which you can find at [`./prisma/dev.db`](./prisma/dev.db).
+This example shows how to implement a **fullstack app in TypeScript with [Next.js](https://nextjs.org/)** using [React](https://reactjs.org/) (frontend), [Next.js API routes](https://nextjs.org/docs/api-routes/introduction) and [Prisma Client](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client) (backend). It also demonstrates how to implement authentication using [NextAuth.js](https://next-auth.js.org/). The example uses an SQLite database file with some initial dummy data which you can find at [`./prisma/dev.database`](./prisma/dev.database).
 
 This example demonstrates a website, which shows posts for many users. Some examples of what a user can do:
-1. Authenticate with [oAuth](https://www.youtube.com/watch?v=KT8ybowdyr0) in front of Github.
+1. Authenticate with [OAuth](https://www.youtube.com/watch?v=KT8ybowdyr0) in front of Github.
 2. Get a list of posts from an external database (Called Prisma).
 3. Some posts are private drafts, and can only be seen by the author.
-4. Some posts are public, and can be seen by all users.
+4. Some posts are public and can be seen by all users.
 
 
 
 ## Prerequisites
 ### Prisma
 To understand how to use the Prisma mySQL database, 
-it is recommended to open a new directory, and go through the prisma database tutorial below
--Git: get the basics:
-1. what is a repository. 
-2. how to clone it.
-3. make edits to it.
+it is recommended to open a new directory and go through the Prisma database tutorial below
+###Git
+
+1. What is a repository.
+2. How to clone it.
+3. Edit it.
 4. Push it to a new repository owned by you.
-5. Anything else, i.e. branches, is good to know but not a must.
+5. Add a collaborator.
+6. Add files and patterns to .gitignore, so you won't submit bloated dirs.
+
+Anything else, i.e. branches, is good to know but not a must.
+It's good to commit whenever you finish a small step and the project is working. The goal is to have a safe point to return to.
 
 ### Links
-1. [atlassian](https://www.atlassian.com/git/tutorials/setting-up-a-repository)
-2. [git-guide](https://rogerdudler.github.io/git-guide/)
+1. [atlassian-Setting up a repository](https://www.atlassian.com/git/tutorials/setting-up-a-repository)
+2. [git - the simple guide
+](https://rogerdudler.github.io/git-guide/)
 3. [prisma database tutorial](https://www.prisma.io/docs/getting-started/quickstart)
+4. [prisma pagination](https://www.prisma.io/docs/concepts/components/prisma-client/pagination)
 
 ### Github 
-Hw1 will be submitted via github. Please open a user with your BGU email address.
+Hw1 will be submitted via Github. Please open a user with your BGU email address.
 To securely update files from your machine by ssh authentication:
 https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys 
 
-or using oauth:
+or using OAuth:
 https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
 This app contains material that we haven't seen yet in class, and that is not needed to complete this task:
-such as server side rendering, and static site generation, dynamic routing and oAuth.
+such as server-side rendering, static site generation, dynamic routing, and OAuth.
 
 ## The task
-The task is to add [pagination](https://www.w3schools.com/css/css3_pagination.asp) to the website, with 10 posts in each page.
-In order to test that your implementation works, you'll also have to populate your databases with fake posts. (See example in 'prisma/seed.ts')
-You can assume that number of posts is <= 1million.
+The task is to add [pagination](https://www.w3schools.com/css/css3_pagination.asp) to the website, with 10 posts on each page.
+To test that your implementation works, you'll also have to populate your databases with fake posts. (See example in 'prisma/seed.ts')
+You can assume that number of posts is <= 1 million.
 Please note there is a theoretical part as well below. 
 
 ## Getting started
 
-### 1. Download example and install dependencies
+### 1. Download the example and install dependencies
 
 Download this example:
 
@@ -88,7 +95,7 @@ When `npx prisma migrate dev` is executed against a newly created database, seed
 
 ### 3. Configuring your authentication provider
 
-In order to get this example to work, you need to configure the [GitHub](https://next-auth.js.org/providers/github) authentication providers from NextAuth.js.
+To get this example to work, you need to configure the [GitHub](https://next-auth.js.org/providers/github) authentication providers from NextAuth.js.
 
 #### Configuring the GitHub authentication provider
 
@@ -113,7 +120,7 @@ Click on the **Register application** button, and then you will be able to find 
 The resulting section in the `.env` file might look like this:
 
 ```env
-# GitHub oAuth
+# GitHub OAuth
 GITHUB_ID=6bafeb321963449bdf51
 GITHUB_SECRET=509298c32faa283f28679ad6de6f86b2472e1bff
 ```
@@ -128,10 +135,10 @@ npm run dev
 
 The app is now running, navigate to [`http://localhost:3000/`](http://localhost:3000/) in your browser to explore its UI.
 
-- Create issues and ask questions on [GitHub](https://github.com/bgu-frontend/hw1-blog/issues) or in Moodle.
+- Create issues and ask questions on [GitHub](https://github.com/bgu-frontend/hw1-blog/issues) or in [Moodle](https://moodle.bgu.ac.il/moodle/mod/forum/view.php?id=2453924).
 
 ### Submission:
-1. Submission is in couples (But please start by do it alone).
+1. Submission is in couples (But please start by doing it alone).
 2. Coding: 70%, Questions: 30%.
 3. Your submitted should be *private*, please make barashd@post.bgu.ac.il a collaborator.
 
@@ -140,7 +147,7 @@ The app is now running, navigate to [`http://localhost:3000/`](http://localhost:
 The tester will:
 1. Clone your submitted repo.
 2. Run the starter scripts.
-3. The tester will fill the db with fake records: it could be empty, small, large (<=1mil) db. 
+3. The tester will fill the database with fake records: it could be empty, small, or large database. 
 4. Manually test that the pages show correctly, by testing a few pages and see that they appear correctly.
 
 There are going to be 5 pass/no pass tests for this part.
