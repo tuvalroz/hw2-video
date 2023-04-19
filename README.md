@@ -1,8 +1,8 @@
 ## Submission: 
-1. Submission is in pairs (But please start by doing it alone).
+1. Submission is in pairs, but it's better for practice if you start alone.
 2. Coding: 70%, Questions: 30%.
-3. Your submitted should be *private*, please make barashd@post.bgu.ac.il a collaborator.
-4. Do not use external libraries that provide the pagination component for you. If in doubt, contact the staff.
+3. Your submitted git repo should be *private*, please make barashd@post.bgu.ac.il a collaborator.
+4. Do not use external libraries that provide the pagination component for you. If in doubt, contact the course staff.
 5. Deadline: 06/05/2023, end of day.
 6. Additional, solve the [theoretical questions]( https://forms.gle/oPgpWcCSrcAN47QMA).
 
