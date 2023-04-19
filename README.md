@@ -1,5 +1,5 @@
 ## Submission: 
-1. Submission is in couples (But please start by doing it alone).
+1. Submission is in pairs (But please start by doing it alone).
 2. Coding: 70%, Questions: 30%.
 3. Your submitted should be *private*, please make barashd@post.bgu.ac.il a collaborator.
 4. Do not use external libraries that provide the pagination component for you. If in doubt, contact the staff.
