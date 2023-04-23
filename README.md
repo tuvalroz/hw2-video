@@ -5,6 +5,7 @@
 4. Do not use external libraries that provide the pagination component for you. If in doubt, contact the course staff.
 5. Deadline: 06/05/2023, end of day.
 6. Additionally, solve the [theoretical questions]( https://forms.gle/oPgpWcCSrcAN47QMA).
+7. Fill in repository details in https://moodle.bgu.ac.il/moodle/mod/questionnaire/view.php?id=2456041.
 
 
 ## The task
