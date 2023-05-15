@@ -8,7 +8,10 @@
 
 
 ## The task
-This task is about adding videos to our posts website.
+this task's main goal about adding videos to our posts website, and is splitted to data transfer from hw1, video part and front end part.
+![overview](https://res.cloudinary.com/dqdivzl0r/image/upload/v1684134346/kk6grnofeqgawigeas9f.png)
+
+### Data transfer
 1 Reduce number of posts sent from backend to 10.  (https://nextjs.org/learn/basics/api-routes)
 
 ### Video: (https://tpiros.dev/blog/uploading-and-displaying-videos-with-nextjs/)
