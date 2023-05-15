@@ -14,7 +14,7 @@ this task's main goal about adding videos to our posts website, and is splitted 
 ### Data transfer
 1 Reduce number of posts sent from backend to 10.  (https://nextjs.org/learn/basics/api-routes)
 
-### Video: (https://tpiros.dev/blog/uploading-and-displaying-videos-with-nextjs/)
+### Video: 
 1. When a post is created/edited, there will be an option to upload exactly one video to the post, and to remove it. 
 2. If a video was uploaded, the user will see the filename, and won't be able to upload any more.
 3. The video meta data will be saved in mongoDB. 
@@ -48,6 +48,7 @@ It's recommended to write in Typescript, i.e. to add types, but not enforced.
 
 3. Read about creating api routes, in https://nextjs.org/learn/basics/api-routes/creating-api-routes.
 4. Follow the tutorial on mongoDB, and open an account. (https://fullstackopen.com/en/part3/saving_data_to_mongo_db)
+5. Follow the full upload video to cloudinary example [here](https://tpiros.dev/blog/uploading-and-displaying-videos-with-nextjs/) 
 
 ### Tips:
 1. It's good to commit whenever you finish a small step and the project is working. The goal is to have a safe point to return to.
