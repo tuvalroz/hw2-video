@@ -4,7 +4,7 @@
 3. Your submitted git repo should be *private*, please make barashd@post.bgu.ac.il a collaborator.
 5. Deadline: 27/05/2023, end of day.
 6. Additionally, solve the questions in: (  link will be filled soon.).
-7. Fill in repository details in [link](https://moodle.bgu.ac.il/moodle/mod/questionnaire/view.php?id=2466075).
+7. To submit, fill in repository details in the following Moodle [link].(https://moodle.bgu.ac.il/moodle/mod/questionnaire/view.php?id=2466075).
 
 
 ## Task
@@ -12,7 +12,7 @@ this task's main goal about adding videos to our posts website, and is splitted 
 ![overview](https://res.cloudinary.com/dqdivzl0r/image/upload/v1684134346/kk6grnofeqgawigeas9f.png)
 
 ### Data transfer
-1 Reduce number of posts sent from backend to 10.  Read about api routes below.
+1. Reduce number of posts sent from backend to 10.  Read about api routes below.
 
 ### Video
 1. When a post is created/edited, there will be an option to upload exactly one video to the post, and to remove it. 
