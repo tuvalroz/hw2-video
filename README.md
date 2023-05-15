@@ -3,30 +3,30 @@
 2. Grades: code part: 70%, questions: 30%.
 3. Your submitted git repo should be *private*, please make barashd@post.bgu.ac.il a collaborator.
 5. Deadline: 27/05/2023, end of day.
-6. Additionally, solve the [theoretical questions](  link will be filled soon.).
+6. Additionally, solve the questions in: (  link will be filled soon.).
 7. Fill in repository details in [link](https://moodle.bgu.ac.il/moodle/mod/questionnaire/view.php?id=2466075).
 
 
-## The task
+## Task
 this task's main goal about adding videos to our posts website, and is splitted to data transfer from hw1, video part and front end part.
 ![overview](https://res.cloudinary.com/dqdivzl0r/image/upload/v1684134346/kk6grnofeqgawigeas9f.png)
 
 ### Data transfer
-1 Reduce number of posts sent from backend to 10.  (https://nextjs.org/learn/basics/api-routes)
+1 Reduce number of posts sent from backend to 10.  Read about api routes below.
 
-### Video: 
+### Video
 1. When a post is created/edited, there will be an option to upload exactly one video to the post, and to remove it. 
 2. If a video was uploaded, the user will see the filename, and won't be able to upload any more.
 3. The video meta data will be saved in mongoDB. 
 Required metadata: user, date uploaded, id of post (sqlite),  link to video (cloudinary). 
 4. We will save the video files in cloudinary. 
 
-### Front end components:
+### Front end components
 1.  automatic focus on the text box in the create post page.
 2.  if a video exists, it should appear, when the containing post is opened.
 
 ### bonus: 0-10 points for extra features:
-1. implement a light/dark theme button for all frontent components (under "components" directory). See For example, https://react.dev/learn top right 
+1. implement a light/dark theme button for all frontent components (under "components" directory). See For example, https://react.dev/learn,  top right corner.
 2. add a spinner icon while uploading/downloading videos. (see example from tpiros.dev)
 3. on the main page, add a video icon next to posts that have videos inside.
 4. if the status changed from online to offline and vice versa- pop an alert. (https://react.dev/learn/you-might-not-need-an-effect)
@@ -64,15 +64,8 @@ Like before, Hw2 will be submitted via Github: fill the group in the moodle link
 3. Perfomance test against a large database from hw1.
 4. Manually test the video feature and any extra features.
 
-
-
-
 ### Getting started- 
 See the previous homework instructions.
-
-
-
-
 
 ## Good luck!
 
