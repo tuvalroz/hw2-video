@@ -37,7 +37,7 @@ It's recommended to write in Typescript, i.e. to add types, but not enforced.
 ## Prerequisites
 
 ### Client side: uploading a video file:
-1. Read about formData, which we'll use to send data from FE to BE. (https://developer.mozilla.org/en-US/docs/Web/API/FormData)
+1. Read about formData, which we'll use to send data from the Frontend to the Backend (https://developer.mozilla.org/en-US/docs/Web/API/FormData)
 2. Read about fetch API: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Basic_concepts
 3. Read about await/async: https://javascript.info/async-await
 
