@@ -53,7 +53,7 @@ It's recommended to write in Typescript, i.e. to add types, but not enforced.
 ### Tips:
 1. It's good to commit whenever you finish a small step and the project is working. The goal is to have a safe point to return to.
 2. Work in small steps, follow the browser debugger and the server debugger for errors. Fix as soon as they happen.
-3. you can use the debugger keyword, console.log(), and configure the [vscode debugger for nextjs.](https://nextjs.org/docs/pages/building-your-application/configuring/debugging)
+3. You can use the _debugger_ keyword, console.log(), those would work for front end and partially backend code. Another option is configure the [vscode debugger for nextjs.](https://nextjs.org/docs/pages/building-your-application/configuring/debugging)
 
 ### Github 
 Like before, Hw2 will be submitted via Github: fill the group in the moodle link.
