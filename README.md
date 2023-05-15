@@ -25,7 +25,7 @@ Required metadata: user, date uploaded, id of post (sqlite),  link to video (clo
 1.  automatic focus on the text box in the create post page.
 2.  if a video exists, it should appear, when the containing post is opened.
 
-### bonus: 0-10 points for extra features:
+### Bonus: 0-10 points ("magen" for the exercises) for extra features:
 1. implement a light/dark theme button for all frontent components (under "components" directory). See For example, https://react.dev/learn,  top right corner.
 2. add a spinner icon while uploading/downloading videos. (see example from tpiros.dev)
 3. on the main page, add a video icon next to posts that have videos inside.
