@@ -48,7 +48,7 @@ It's recommended to write in Typescript, i.e. to add types, but not enforced.
 
 3. Read about creating api routes, in https://nextjs.org/learn/basics/api-routes/creating-api-routes, and https://nextjs.org/docs/app/building-your-application/routing/router-handlers.
 4. Follow the tutorial about how to read/write to mongoDB, and open an account. (https://fullstackopen.com/en/part3/saving_data_to_mongo_db)
-5. Follow the full tutorial to cloudinary example [here](https://tpiros.dev/blog/uploading-and-displaying-videos-with-nextjs/) 
+5. Follow the full tutorial on uploading to cloudinary [here](https://tpiros.dev/blog/uploading-and-displaying-videos-with-nextjs/) 
 
 ### Tips:
 1. It's good to commit whenever you finish a small step and the project is working. The goal is to have a safe point to return to.
