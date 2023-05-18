@@ -5,6 +5,8 @@
 5. Deadline: 27/05/2023, end of day.
 6. Additionally, solve the questions in: (  link will be filled soon.).
 7. To submit, fill in repository details in the following Moodle [link].(https://moodle.bgu.ac.il/moodle/mod/questionnaire/view.php?id=2466075).
+8. in Atlas: Set the allowed ip addresses to 'all' (0.0.0.0).
+9. On your final version, download into a new dir and make sure it installs and runs correctly, preferably on a different machine.
 
 
 ## Task
