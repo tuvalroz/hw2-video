@@ -2,26 +2,67 @@ import React, { useState } from "react";
 import Layout from "../components/Layout";
 import Router from "next/router";
 import { useSession } from "next-auth/react";
+import { Upload } from "../components/Upload";
+import { PostProps } from "../components/Post";
 
 const Draft: React.FC = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const { data: session, status } = useSession();  
+  const [selectedFileFormData, setSelectedFileFormData] = useState<FormData>(new FormData());
+  const { data: session, status } = useSession();
   let email = session?.user?.email;
   const submitData = async (e: React.SyntheticEvent) => {
     e.preventDefault();
+    let videoId = "";
+    let videoData = undefined;
+
+    if (selectedFileFormData.get('inputFile')) {
+      videoData = await postVideoInColudinary(selectedFileFormData);
+    }
+
     try {
-      const body = { title, content, session, email };
-      await fetch(`/api/post`, {
+      const body = { title, content, session, email, videoUrl: videoId }; // need to check in the backend if the videoId is empty
+      let response = await fetch(`/api/post`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
       await Router.push("/drafts");
+      let publishedPost = await response.json();
+
+      postVideoInMongo(videoData, publishedPost); //TODO continue from here (implement this)
+
     } catch (error) {
       console.error(error);
     }
   };
+
+  const postVideoInMongo = (videoData: { url: string, created_at: string, asset_id: string }, post: PostProps) => {
+    const videoUrl = videoData.url;
+    const videoDate = videoData.created_at;
+    const videoId = videoData.asset_id;
+    const postId = post.id;
+    const user = post.author;
+
+    return "1";
+  }
+
+  const postVideoInColudinary = async (formData: FormData) => {
+    try {
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const res = await response;
+      console.log(res);
+      const data = await res.json();
+
+      return data;
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <Layout>
@@ -42,6 +83,8 @@ const Draft: React.FC = () => {
             rows={8}
             value={content}
           />
+          <Upload setFormData={setSelectedFileFormData} />
+          <br />
           <input disabled={!content || !title} type="submit" value="Create" />
           <a className="back" href="#" onClick={() => Router.push("/")}>
             or Cancel
