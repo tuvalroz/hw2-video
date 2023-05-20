@@ -158,10 +158,10 @@ const Draft: React.FC = () => {
           margin-left: 1rem;
         }
 
-<<<<<<< HEAD
+
         a{
           ${darkMode ? "color: white" : ""}
-=======
+        }
         @keyframes spinner {
           0% {
             transform: rotate(0deg);
@@ -177,7 +177,7 @@ const Draft: React.FC = () => {
           border-top: 10px solid #383636; /* Black */
           border-radius: 50%;
           animation: spinner 1.5s linear infinite;
->>>>>>> e7fac32d30e7bfbf2661f790587f62f8f2988250
+
         }
       `}</style>
     </Layout>
