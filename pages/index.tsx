@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { GetServerSideProps } from "next";
 import Layout from "../components/Layout";
 import Post, { PostProps } from "../components/Post";
 import prisma from '../lib/prisma'
+import { getVideoUrl } from "../mongo/mongo";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const feed = await prisma.post.findMany({
@@ -17,17 +18,58 @@ export const getServerSideProps: GetServerSideProps = async () => {
       },
     },
   });
+
+  /*let feedWithVideo = await feed.map(async (post) => {
+    if (post.hasVideo) {
+      const url = await getVideoUrl(post.id);
+      (post as PostProps).videoUrl = url;
+    }
+
+    return post;
+  });*/
+
+  let urlsMap = new Map<string, string>();
+
+
+
+
+  feed.forEach(async (post) => {
+    if (post.hasVideo) {
+      console.log("Before getVideoUrl");
+      const url = await getVideoUrl(post.id);
+      urlsMap.set(post.id.toString(), url);
+      console.log("After getVideoUrl222222 "+urlsMap.get(post.id.toString()));
+      console.log("sizeeee "+ urlsMap.size)
+    }
+  });
+
+  
+
+
+  //for each post get its video
+
   return {
-    props: { feed },
+    props: { feed, urlsMap },
   };
 };
 
 type Props = {
   feed: PostProps[];
-  darkMode: boolean;
+  urlsMap: Map<string, string>;
 };
 
 const Blog: React.FC<Props> = (props) => {
+  console.log("size of map is "+ props.urlsMap.size)
+
+ 
+
+  props.feed.forEach(post => {
+    let url = props.urlsMap.get(post.id.toString());
+    if (url) {
+      post.videoUrl = url;
+    }
+  });
+
 
   return (
     <Layout>
@@ -36,10 +78,11 @@ const Blog: React.FC<Props> = (props) => {
         <main>
           {props.feed.map((post) => {
             return (
-            <div key={post.id} className="post">
-              <Post post={post} />
-            </div>
-          )})}
+              <div key={post.id} className="post">
+                <Post post={post} />
+              </div>
+            )
+          })}
         </main>
       </div>
       <style jsx>{`

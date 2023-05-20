@@ -33,6 +33,15 @@ export function sendVideo(videoUrl, videoDate, postId, authorId) {
 
     video.save().then(result => {
         console.log('video saved!')
-        mongoose.connection.close()
+        mongoose.connection.close() //TODO check if need this close?
     })
+}
+
+export async function getVideoUrl(videoId) {
+    let urls = await Video.find({ postId: videoId }).then(result => {
+        return result.map(video => video.videoUrl);
+        //mongoose.connection.close()
+    })
+    let url = urls[0];
+    return url ?? "";
 }

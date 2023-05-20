@@ -12,7 +12,7 @@ export type PostProps = {
   } | null;
   content: string;
   published: boolean;
-  hasVideo: boolean;
+  videoUrl?: string;
 };
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
@@ -24,6 +24,7 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <h2>{post.title}</h2>
       <small>By {authorName}</small>
       <ReactMarkdown children={post.content} />
+      {post.videoUrl && <video src={post.videoUrl} autoPlay={true} />}
       <style jsx>{`
         div {
           color: ${darkMode ? "white" : "inherit"};
