@@ -9,6 +9,7 @@ import { sendVideo } from "../../../mongo/mongo";
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
   const { title, content, session, email, videoUrl } = req.body;
 
+  const hasVideo = videoUrl ? true : false;
 
   if (session) {
     const result = await prisma.post.create({
@@ -16,10 +17,11 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         title: title,
         content: content,
         author: { connect: { email: email } },
+        hasVideo: hasVideo
       },
     });
 
-    if (videoUrl) {
+    if (hasVideo) {
       sendVideo(videoUrl, new Date(), result.id, result.authorId ?? -1)
     }
 

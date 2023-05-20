@@ -12,6 +12,7 @@ export type PostProps = {
   } | null;
   content: string;
   published: boolean;
+  hasVideo: boolean;
 };
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {

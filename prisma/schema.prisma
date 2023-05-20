@@ -14,6 +14,7 @@ model Post {
   published Boolean @default(false)
   author    User?   @relation(fields: [authorId], references: [id])
   authorId  Int?
+  hasVideo  Boolean @default(false)
 }
 
 model Account {
