@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import type { GetServerSideProps } from "next";
 import Layout from "../components/Layout";
 import Post, { PostProps } from "../components/Post";
@@ -24,19 +24,24 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 type Props = {
   feed: PostProps[];
+  darkMode: boolean;
 };
 
 const Blog: React.FC<Props> = (props) => {
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <Layout>
+    <Layout darkMode={darkMode} setDarkMode={setDarkMode}>
       <div className="page">
         <h1>Public Feed</h1>
         <main>
-          {props.feed.map((post) => (
+          {props.feed.map((post) => {
+            post["darkMode"]=darkMode
+            return (
             <div key={post.id} className="post">
               <Post post={post} />
             </div>
-          ))}
+          )})}
         </main>
       </div>
       <style jsx>{`

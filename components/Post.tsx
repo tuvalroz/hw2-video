@@ -11,6 +11,7 @@ export type PostProps = {
   } | null;
   content: string;
   published: boolean;
+  darkMode: boolean;
 };
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
@@ -22,8 +23,9 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <ReactMarkdown children={post.content} />
       <style jsx>{`
         div {
-          color: inherit;
+          color: ${post.darkMode ? "white" : "inherit"};
           padding: 2rem;
+          ${post.darkMode ? "background-color: gray;" : ""}
         }
       `}</style>
     </div>

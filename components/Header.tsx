@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
 
-const Header: React.FC = () => {
+
+const Header: React.FC<{darkMode:boolean, setDarkMode: Dispatch<SetStateAction<boolean>>}> = ({darkMode,setDarkMode}) => {
   const router = useRouter();
   const isActive: (pathname: string) => boolean = (pathname) =>
     router.pathname === pathname;
@@ -24,12 +25,12 @@ const Header: React.FC = () => {
 
         a {
           text-decoration: none;
-          color: #000;
+          color: ${darkMode ? "#FFFFFF" : "#000"};
           display: inline-block;
         }
 
         .left a[data-active="true"] {
-          color: gray;
+          color: ${darkMode ? "rbga(0,0,0,0.7)" : "gray"};
         }
 
         a + a {
@@ -56,12 +57,12 @@ const Header: React.FC = () => {
 
           a {
             text-decoration: none;
-            color: #000;
+            color: ${darkMode ? "#FFFFFF" : "#000"};
             display: inline-block;
           }
 
           .left a[data-active="true"] {
-            color: gray;
+            color: ${darkMode ? "rbga(0,0,0,0.7)" : "gray"};
           }
 
           a + a {
@@ -91,7 +92,7 @@ const Header: React.FC = () => {
         <style jsx>{`
           a {
             text-decoration: none;
-            color: #000;
+            color: ${darkMode ? "#FFFFFF" : "#000"};
             display: inline-block;
           }
 
@@ -131,12 +132,12 @@ const Header: React.FC = () => {
 
           a {
             text-decoration: none;
-            color: #000;
+            color: ${darkMode ? "#FFFFFF" : "#000"};
             display: inline-block;
           }
 
           .left a[data-active="true"] {
-            color: gray;
+            color: ${darkMode ? "rbga(0,0,0,0.7)" : "gray"};
           }
 
           a + a {
@@ -147,6 +148,7 @@ const Header: React.FC = () => {
     );
     right = (
       <div className="right">
+        <button onClick={()=>setDarkMode(!darkMode)}><a>Dark mode</a></button>
         <p>
           {session.user?.name} ({session.user?.email})
         </p>
@@ -161,7 +163,7 @@ const Header: React.FC = () => {
         <style jsx>{`
           a {
             text-decoration: none;
-            color: #000;
+            color: ${darkMode ? "#FFFFFF" : "#000"};
             display: inline-block;
           }
 
@@ -169,6 +171,7 @@ const Header: React.FC = () => {
             display: inline-block;
             font-size: 13px;
             padding-right: 1rem;
+            ${darkMode ? "color: #FFFFFF" : ""}
           }
 
           a + a {
