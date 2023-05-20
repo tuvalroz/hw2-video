@@ -20,7 +20,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
     });
 
     if (videoUrl) {
-      sendVideo(videoUrl, new Date(), result.id, result.authorId)
+      sendVideo(videoUrl, new Date(), result.id, result.authorId ?? -1)
     }
 
     res.json(result);

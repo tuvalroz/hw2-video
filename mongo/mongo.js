@@ -17,18 +17,18 @@ const videoSchema = new mongoose.Schema({
     videoUrl: String,
     videoDate: String,
     postId: String,
-    author: { name: String, email: String }
+    authorId: Number
 })
 
 const Video = mongoose.model('Video', videoSchema)
 
 
-export function sendVideo(videoUrl, videoDate, postId, author) {
+export function sendVideo(videoUrl, videoDate, postId, authorId) {
     const video = new Video({
         videoUrl: videoUrl,
         videoDate: videoDate,
         postId: postId,
-        author: author
+        authorId: authorId
     })
 
     video.save().then(result => {
