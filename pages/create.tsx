@@ -37,12 +37,35 @@ const Draft: React.FC = () => {
     }
   };
 
-  const postVideoInMongo = (videoData: { url: string, created_at: string, asset_id: string }, post: PostProps) => {
-    const videoUrl = videoData.url;
-    const videoDate = videoData.created_at;
-    const videoId = videoData.asset_id;
-    const postId = post.id;
-    const user = post.author;
+  const postVideoInMongo = async (videoData: { url: string, created_at: string, asset_id: string }, post: PostProps) => {
+
+    let videoFormData = new FormData();
+    videoFormData.append('videoUrl', videoData.url);
+    videoFormData.append('videoDate', videoData.created_at);
+    videoFormData.append('postId', post.id.toString());
+    videoFormData.append('author_name', post.author?.name ?? "");
+    videoFormData.append('author_email', post.author?.email ?? "");
+
+    try {
+      const response = await fetch('/api/postVideoMongo', {
+        method: 'POST',
+        body: videoFormData,
+      });
+      const res = await response;
+      console.log(res);
+      const data = await res.json();
+
+      return data;
+
+    } catch (error) {
+      console.log(error);
+    }
+
+
+
+
+
+
 
     return "1";
   }
