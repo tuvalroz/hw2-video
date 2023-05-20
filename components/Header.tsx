@@ -76,6 +76,7 @@ const Header: React.FC = () => {
     );
     right = (
       <div className="right">
+        <button onClick={()=>setDarkMode(!darkMode)}><a>Dark mode</a></button>
         <p>Validating session ...</p>
         <style jsx>{`
           .right {
@@ -89,6 +90,7 @@ const Header: React.FC = () => {
   if (!session) {
     right = (
       <div className="right">
+        <button onClick={()=>setDarkMode(!darkMode)}><a>Dark mode</a></button>
         <Link href="/api/auth/signin" legacyBehavior>
           <a data-active={isActive("/signup")}>Log in</a>
         </Link>
