@@ -10,8 +10,11 @@ const Draft: React.FC = () => {
   const [content, setContent] = useState("");
   const [selectedFileFormData, setSelectedFileFormData] = useState<FormData>(new FormData());
   const { data: session, status } = useSession();
+  const [isUploasing, setIsUploasing] = useState(false);
   let email = session?.user?.email;
+
   const submitData = async (e: React.SyntheticEvent) => {
+    setIsUploasing(true);
     e.preventDefault();
     let videoId = "";
     let videoData = undefined;
@@ -31,9 +34,12 @@ const Draft: React.FC = () => {
       let publishedPost = await response.json();
 
       postVideoInMongo(videoData, publishedPost); //TODO continue from here (implement this)
+      setIsUploasing(false);
 
     } catch (error) {
       console.error(error);
+      setIsUploasing(false);
+
     }
   };
 
@@ -108,8 +114,16 @@ const Draft: React.FC = () => {
           />
           <Upload setFormData={setSelectedFileFormData} />
           <br />
-          <input disabled={!content || !title} type="submit" value="Create" />
-          <a className="back" href="#" onClick={() => Router.push("/")}>
+          {!isUploasing?
+            <input disabled={!content || !title} type="submit" value="Create" />
+          :
+              <div className="spinner-container">
+                <div className="loading-spinner">
+                </div>
+              </div>
+          }
+
+            <a className="back" href="#" onClick={() => Router.push("/")}>
             or Cancel
           </a>
         </form>
@@ -140,6 +154,23 @@ const Draft: React.FC = () => {
 
         .back {
           margin-left: 1rem;
+        }
+
+        @keyframes spinner {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        .loading-spinner{
+          width: 50px;
+          height: 50px;
+          border: 10px solid #f3f3f3; /* Light grey */
+          border-top: 10px solid #383636; /* Black */
+          border-radius: 50%;
+          animation: spinner 1.5s linear infinite;
         }
       `}</style>
     </Layout>
