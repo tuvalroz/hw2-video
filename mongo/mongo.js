@@ -19,9 +19,13 @@ const videoSchema = new mongoose.Schema({
     postId: String,
     authorId: Number
 })
+let Video; // Define Video model outside the function to prevent recompilation
 
-const Video = mongoose.model('Video', videoSchema)
-
+try {
+  Video = mongoose.model('Video'); // Try to retrieve an existing model
+} catch {
+  Video = mongoose.model('Video', videoSchema); // Create a new model if it doesn't exist
+}
 
 export function sendVideo(videoUrl, videoDate, postId, authorId) {
     const video = new Video({
