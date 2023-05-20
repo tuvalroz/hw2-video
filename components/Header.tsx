@@ -1,10 +1,13 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, {useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/react";
+import darkModeContext from "./darkModeContext";
 
 
-const Header: React.FC<{darkMode:boolean, setDarkMode: Dispatch<SetStateAction<boolean>>}> = ({darkMode,setDarkMode}) => {
+const Header: React.FC = () => {
+  const darkMode = useContext(darkModeContext).darkMode;
+  const setDarkMode = useContext(darkModeContext).setDarkMode;
   const router = useRouter();
   const isActive: (pathname: string) => boolean = (pathname) =>
     router.pathname === pathname;

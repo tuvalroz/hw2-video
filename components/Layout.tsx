@@ -1,18 +1,18 @@
-import React, { Dispatch, ReactNode,SetStateAction,useState } from "react";
+import React, { Dispatch, ReactNode,SetStateAction,useContext,useState } from "react";
 import Header from "./Header";
+import darkModeContext from "./darkModeContext";
 
 type Props = {
   children: ReactNode;
-  darkMode: boolean;
-  setDarkMode: Dispatch<SetStateAction<boolean>> ;
 };
 
 
 const Layout: React.FC<Props> = (props) => {
+  const darkMode = useContext(darkModeContext).darkMode;
   
   return (
   <div>
-    <Header darkMode={props.darkMode} setDarkMode={props.setDarkMode}/>
+    <Header/>
     <div className="layout">{props.children}</div>
     <style jsx global>{`
       html {
@@ -32,7 +32,7 @@ const Layout: React.FC<Props> = (props) => {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
           "Segoe UI Symbol";
-        background: ${props.darkMode? "rgba(0, 0, 0, 1.0)": "rgba(0, 0, 0, 0.05)"} ;
+        background: ${darkMode? "rgba(0, 0, 0, 1.0)": "rgba(0, 0, 0, 0.05)"} ;
       }
 
       input,
@@ -42,11 +42,11 @@ const Layout: React.FC<Props> = (props) => {
 
       button {
         cursor: pointer;
-        ${props.darkMode? "background-color: rgb(128,128,128);" : ""}
+        ${darkMode? "background-color: rgb(128,128,128);" : ""}
       }
 
       h1{
-        ${props.darkMode ? "color: #FFFFFF" : ""}
+        ${darkMode ? "color: #FFFFFF" : ""}
       }
     `}</style>
     <style jsx>{`

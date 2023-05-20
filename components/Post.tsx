@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import Router from "next/router";
 import ReactMarkdown from "react-markdown";
+import darkModeContext from "./darkModeContext";
 
 export type PostProps = {
   id: number;
@@ -11,11 +12,12 @@ export type PostProps = {
   } | null;
   content: string;
   published: boolean;
-  darkMode: boolean;
 };
 
 const Post: React.FC<{ post: PostProps }> = ({ post }) => {
   const authorName = post.author ? post.author.name : "Unknown author";
+  const darkMode = useContext(darkModeContext).darkMode;
+
   return (
     <div onClick={() => Router.push("/p/[id]", `/p/${post.id}`)}>
       <h2>{post.title}</h2>
@@ -23,9 +25,9 @@ const Post: React.FC<{ post: PostProps }> = ({ post }) => {
       <ReactMarkdown children={post.content} />
       <style jsx>{`
         div {
-          color: ${post.darkMode ? "white" : "inherit"};
+          color: ${darkMode ? "white" : "inherit"};
           padding: 2rem;
-          ${post.darkMode ? "background-color: gray;" : ""}
+          ${darkMode ? "background-color: gray;" : ""}
         }
       `}</style>
     </div>

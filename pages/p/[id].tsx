@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GetServerSideProps } from "next";
 import ReactMarkdown from "react-markdown";
 import Layout from "../../components/Layout";
@@ -6,6 +6,7 @@ import Router from "next/router";
 import { PostProps } from "../../components/Post";
 import prisma from '../../lib/prisma'
 import { useSession } from "next-auth/react";
+import darkModeContext from "../../components/darkModeContext";
 
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -39,6 +40,7 @@ async function deletePost(id: number): Promise<void> {
 }
 
 const Post: React.FC<PostProps> = (props) => {
+  const darkMode = useContext(darkModeContext).darkMode;
   const { data: session, status } = useSession();
   if (status === 'loading') {
     return <div>Authenticating ...</div>;
@@ -55,7 +57,7 @@ const Post: React.FC<PostProps> = (props) => {
       <div>
         <h2>{title}</h2>
         <p>By {props?.author?.name || "Unknown author"}</p>
-        <ReactMarkdown children={props.content} />
+        <p><ReactMarkdown children={props.content} /></p>
         {!props.published && userHasValidSession && postBelongsToUser && (
           <button onClick={() => publishPost(props.id)}>Publish</button>
         )}
@@ -72,9 +74,16 @@ const Post: React.FC<PostProps> = (props) => {
         .actions {
           margin-top: 2rem;
         }
+        h2 {
+          ${darkMode? "color: white" : ""};
+        }
+        p {
+          ${darkMode? "color: white" : ""};
+        }
 
         button {
-          background: #ececec;
+          background: ${darkMode? "gray" : "#ececec"};
+          ${darkMode? "color: white" : ""};
           border: 0;
           border-radius: 0.125rem;
           padding: 1rem 2rem;

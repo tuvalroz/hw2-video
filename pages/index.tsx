@@ -28,15 +28,13 @@ type Props = {
 };
 
 const Blog: React.FC<Props> = (props) => {
-  const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <Layout darkMode={darkMode} setDarkMode={setDarkMode}>
+    <Layout>
       <div className="page">
         <h1>Public Feed</h1>
         <main>
           {props.feed.map((post) => {
-            post["darkMode"]=darkMode
             return (
             <div key={post.id} className="post">
               <Post post={post} />

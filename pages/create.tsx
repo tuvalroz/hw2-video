@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Layout from "../components/Layout";
 import Router from "next/router";
 import { useSession } from "next-auth/react";
 import { Upload } from "../components/Upload";
 import { PostProps } from "../components/Post";
+import darkModeContext from "../components/darkModeContext";
 
 const Draft: React.FC = () => {
+  const darkMode = useContext(darkModeContext).darkMode;
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [selectedFileFormData, setSelectedFileFormData] = useState<FormData>(new FormData());
@@ -117,6 +119,10 @@ const Draft: React.FC = () => {
 
         .back {
           margin-left: 1rem;
+        }
+
+        a{
+          ${darkMode ? "color: white" : ""}
         }
       `}</style>
     </Layout>
