@@ -4,7 +4,6 @@ import Router from "next/router";
 import { useSession } from "next-auth/react";
 import { Upload } from "../components/Upload";
 import { PostProps } from "../components/Post";
-// import "./spinner.css";
 
 const Draft: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -13,12 +12,6 @@ const Draft: React.FC = () => {
   const { data: session, status } = useSession();
   const [isUploasing, setIsUploasing] = useState(false);
   let email = session?.user?.email;
-
-  // function LoadingSpinner() {
-  //   return (
-      
-  //   );
-  // }
 
   const submitData = async (e: React.SyntheticEvent) => {
     setIsUploasing(true);
