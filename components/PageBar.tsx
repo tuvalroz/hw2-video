@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useRouter } from 'next/router';
+import darkModeContext from "./darkModeContext";
 
 const PageBar: React.FC<{ currentPage: number, numberOfPosts: number, pageSize: number }> = ({ currentPage, numberOfPosts, pageSize }) => {
   const router = useRouter();
+  const darkMode = useContext(darkModeContext).darkMode;
   const goToPageHandler = (i: number) => {
     router.replace({ pathname: router.asPath.split("?")[0], query: { page: currentPage + i } });
   }
@@ -25,7 +27,7 @@ const PageBar: React.FC<{ currentPage: number, numberOfPosts: number, pageSize: 
         }
         
         .pagination a {
-          color: black;
+          color: ${darkMode? "white" : "black"};
           float: left;
           padding: 8px 16px;
           text-decoration: none;
