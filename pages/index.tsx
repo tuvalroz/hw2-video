@@ -5,6 +5,7 @@ import Post, { PostProps } from "../components/Post";
 import prisma from '../lib/prisma'
 import { getVideosUrl } from "../mongo/mongo";
 import PageBar from "../components/PageBar";
+import { useOnlineStatus } from "../components/useOnline";
 
 const pageSize = 2;
 
@@ -35,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const urls = await getVideosUrl();
 
   return {
-    props: { feed, urls, numberOfPosts, pageNumber}
+    props: { feed, urls, numberOfPosts, pageNumber }
   };
 };
 
@@ -47,6 +48,7 @@ type Props = {
 };
 
 const Blog: React.FC<Props> = (props) => {
+  useOnlineStatus();
   const { feed, urls, numberOfPosts, pageNumber } = props;
 
   feed.forEach(post => {
