@@ -30,7 +30,7 @@ export default async (req, res) => {
     // upload file to cloudinary
     const response = await cloudinary.v2.uploader.upload(filePath, {
         resource_type: 'video',
-        public_id: 'my_video123123123',
+        public_id: 'my_video',
     });
 
     // response == video url. now we will add it to the mongoDb and return the video id

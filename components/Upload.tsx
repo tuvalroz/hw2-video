@@ -5,7 +5,7 @@ export const Upload: React.FC<{ setFormData: (formData: FormData) => void }> = (
         event.preventDefault();
         const formData = new FormData();
         const file = event.target.files?.[0];
-        formData.append('inputFile', file ?? new File([], 'empty-file', { type: 'text/plain' })); //TODO rename the empty file
+        formData.append('inputFile', file ?? new File([], 'empty-file', { type: 'text/plain' })); 
         setFormData(formData);
     }
 

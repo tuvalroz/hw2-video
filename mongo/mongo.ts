@@ -5,7 +5,6 @@ const mongoose = require('mongoose')
     process.exit(1)
 }*/
 
-//const password = process.argv[2]; TODO not pass the password like this
 const password = "twg2a1fI33KH1Flo";
 const url = `mongodb+srv://tuvalroz:${password}@noamgiladtuvalcluster.qowf5fq.mongodb.net/videoApp?retryWrites=true&w=majority`;
 
@@ -37,7 +36,6 @@ export function sendVideo(videoUrl: string, videoDate: Date, postId: number, aut
 
     video.save().then((_result: any) => {
         console.log('video saved!')
-        //mongoose.connection.close() //TODO check if need this close?
     })
 }
 

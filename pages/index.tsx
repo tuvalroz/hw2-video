@@ -4,9 +4,16 @@ import Layout from "../components/Layout";
 import Post, { PostProps } from "../components/Post";
 import prisma from '../lib/prisma'
 import { getVideosUrl } from "../mongo/mongo";
+import PageBar from "../components/PageBar";
 
-export const getServerSideProps: GetServerSideProps = async () => {
+const pageSize = 2;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  let pageFromContext = parseInt(context.query?.page as string);
+  let pageNumber = pageFromContext > 0 ? pageFromContext : 1;
   const feed = await prisma.post.findMany({
+    skip: (pageNumber - 1) * pageSize,
+    take: pageSize,
     where: {
       published: true,
     },
@@ -19,25 +26,31 @@ export const getServerSideProps: GetServerSideProps = async () => {
     },
   });
 
+  const numberOfPosts: number = await prisma.post.count({
+    where: {
+      published: true,
+    }
+  });
+
   const urls = await getVideosUrl();
 
   return {
-    props: { feed, urls }
+    props: { feed, urls, numberOfPosts, pageNumber}
   };
 };
 
 type Props = {
   feed: PostProps[];
   urls: Map<number, string>;
+  numberOfPosts: number;
+  pageNumber: number;
 };
 
 const Blog: React.FC<Props> = (props) => {
-  console.log("size of urls is " + props.urls.size)
+  const { feed, urls, numberOfPosts, pageNumber } = props;
 
-
-
-  props.feed.forEach(post => {
-    let url = props.urls.get(post.id);
+  feed.forEach(post => {
+    let url = urls.get(post.id);
     if (url) {
       post.videoUrl = url;
     }
@@ -46,10 +59,15 @@ const Blog: React.FC<Props> = (props) => {
 
   return (
     <Layout>
+      <PageBar
+        currentPage={pageNumber}
+        numberOfPosts={numberOfPosts}
+        pageSize={pageSize}
+      />
       <div className="page">
         <h1>Public Feed</h1>
         <main>
-          {props.feed.map((post) => {
+          {feed.map((post) => {
             return (
               <div key={post.id} className="post">
                 <Post post={post} />
