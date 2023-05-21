@@ -21,6 +21,11 @@ const Draft: React.FC = () => {
 
     if (selectedFileFormData.get('inputFile')) {
       let videoData = await postVideoInColudinary(selectedFileFormData);
+      if (videoData.url == "-1") {
+        alert("Faild to upload video")
+        setIsUploading(false);
+        return
+      }
       videoUrl = videoData.url;
     }
 
@@ -57,6 +62,7 @@ const Draft: React.FC = () => {
 
     } catch (error) {
       console.log(error);
+      return { url: "-1" }
     }
   }
 

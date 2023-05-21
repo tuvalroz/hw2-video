@@ -7,6 +7,7 @@ import { PostProps } from "../../components/Post";
 import prisma from '../../lib/prisma'
 import { useSession } from "next-auth/react";
 import darkModeContext from "../../components/darkModeContext";
+import { getVideosUrl } from "../../mongo/mongo";
 
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -20,8 +21,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       },
     },
   });
+  const urls = await getVideosUrl();
+
   return {
-    props: post ?? { author: { name: "Me" } }
+    props: { post, urls } ?? { author: { name: "Me" } }
   };
 };
 
@@ -39,30 +42,41 @@ async function deletePost(id: number): Promise<void> {
   await Router.push("/")
 }
 
-const Post: React.FC<PostProps> = (props) => {
+type Props = {
+  post: PostProps;
+  urls: Map<number, string>;
+};
+
+
+const Post: React.FC<Props> = (props) => {
   const darkMode = useContext(darkModeContext).darkMode;
   const { data: session, status } = useSession();
   if (status === 'loading') {
     return <div>Authenticating ...</div>;
   }
   const userHasValidSession = Boolean(session);
-  const postBelongsToUser = session?.user?.email === props.author?.email;
-  let title = props.title;
-  if (!props.published) {
+  const postBelongsToUser = session?.user?.email === props.post.author?.email;
+  let title = props.post.title;
+  if (!props.post.published) {
     title = `${title} (Draft)`;
   }
+
+  let url = props.urls.get(props.post.id);
+  props.post.videoUrl = url;
 
   return (
     <Layout>
       <div>
         <h2>{title}</h2>
-        <p>By {props?.author?.name || "Unknown author"}</p>
-        <p><ReactMarkdown children={props.content} /></p>
-        {!props.published && userHasValidSession && postBelongsToUser && (
-          <button onClick={() => publishPost(props.id)}>Publish</button>
+        <p>By {props?.post.author?.name || "Unknown author"}</p>
+        <p><ReactMarkdown children={props.post.content} /></p>
+        {props.post.videoUrl &&
+          <div> <video src={props.post.videoUrl} autoPlay={true} loop={true} />  <br /> </div>}
+        {!props.post.published && userHasValidSession && postBelongsToUser && (
+          <button onClick={() => publishPost(props.post.id)}>Publish</button>
         )}
         {userHasValidSession && postBelongsToUser && (
-          <button onClick={() => deletePost(props.id)}>Delete</button>
+          <button onClick={() => deletePost(props.post.id)}>Delete</button>
         )}
       </div>
       <style jsx>{`
@@ -75,15 +89,15 @@ const Post: React.FC<PostProps> = (props) => {
           margin-top: 2rem;
         }
         h2 {
-          ${darkMode? "color: white" : ""};
+          ${darkMode ? "color: white" : ""};
         }
         p {
-          ${darkMode? "color: white" : ""};
+          ${darkMode ? "color: white" : ""};
         }
 
         button {
-          background: ${darkMode? "gray" : "#ececec"};
-          ${darkMode? "color: white" : ""};
+          background: ${darkMode ? "gray" : "#ececec"};
+          ${darkMode ? "color: white" : ""};
           border: 0;
           border-radius: 0.125rem;
           padding: 1rem 2rem;

@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import Post, { PostProps } from "../components/Post";
 import { useSession, getSession } from "next-auth/react";
 import prisma from '../lib/prisma'
+import { getVideosUrl } from "../mongo/mongo";
 
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -23,18 +24,30 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
         select: { name: true },
       },
     },
+    
   });
+  const urls = await getVideosUrl();
+
   return {
-    props: { drafts },
+    props: { drafts, urls },
   };
 };
 
 type Props = {
   drafts: PostProps[];
+  urls: Map<number, string>;
+
 };
 
 const Drafts: React.FC<Props> = (props) => {
   const {data: session}= useSession();
+
+  props.drafts.forEach(draft => {
+    let url = props.urls.get(draft.id);
+    if (url) {
+      draft.videoUrl = url;
+    }
+  });
 
   if (!session) {
     return (
