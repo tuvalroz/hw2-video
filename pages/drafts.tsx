@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import Layout from "../components/Layout";
 import Post, { PostProps } from "../components/Post";
@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
         select: { name: true },
       },
     },
-    
+
   });
   const urls = await getVideosUrl();
 
@@ -40,14 +40,22 @@ type Props = {
 };
 
 const Drafts: React.FC<Props> = (props) => {
-  const {data: session}= useSession();
+  const [draftsFeed, setDraftsFeed] = useState<PostProps[]>([]);
+  const { data: session } = useSession();
+  const { drafts, urls } = props;
 
-  props.drafts.forEach(draft => {
-    let url = props.urls.get(draft.id);
-    if (url) {
-      draft.videoUrl = url;
-    }
-  });
+  useEffect(() => {
+    let newDrafts = drafts.map(draft => {
+      let newDraft = { ...draft };
+      let url = urls.get(draft.id);
+      if (url) {
+        newDraft.videoUrl = url;
+      }
+      return newDraft;
+    });
+
+    setDraftsFeed(newDrafts);
+  }, [props])
 
   if (!session) {
     return (
@@ -63,7 +71,7 @@ const Drafts: React.FC<Props> = (props) => {
       <div className="page">
         <h1>My Drafts</h1>
         <main>
-          {props.drafts.map((post) => (
+          {draftsFeed.map((post) => (
             <div key={post.id} className="post">
               <Post post={post} />
             </div>
