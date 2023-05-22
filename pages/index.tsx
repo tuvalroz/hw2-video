@@ -65,8 +65,6 @@ const Blog: React.FC<Props> = (props) => {
     setPosts(newPosts);
   }, [props])
 
-
-
   return (
     <Layout>
       <PageBar
