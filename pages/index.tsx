@@ -7,7 +7,7 @@ import { getVideosUrl } from "../mongo/mongo";
 import PageBar from "../components/PageBar";
 import { useOnlineStatus } from "../components/useOnline";
 
-const pageSize = 3;
+const pageSize = 10;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   let pageFromContext = parseInt(context.query?.page as string);
