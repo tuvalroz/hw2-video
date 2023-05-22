@@ -7,7 +7,7 @@ import { getVideosUrl } from "../mongo/mongo";
 import PageBar from "../components/PageBar";
 import { useOnlineStatus } from "../components/useOnline";
 
-const pageSize = 10;
+const pageSize = 3;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   let pageFromContext = parseInt(context.query?.page as string);
@@ -48,15 +48,23 @@ type Props = {
 };
 
 const Blog: React.FC<Props> = (props) => {
+  const [posts, setPosts] = useState<PostProps[]>([]);
   useOnlineStatus();
   const { feed, urls, numberOfPosts, pageNumber } = props;
 
-  feed.forEach(post => {
-    let url = urls.get(post.id);
-    if (url) {
-      post.videoUrl = url;
-    }
-  });
+  useEffect(() => {
+    let newPosts = feed.map(post => {
+      let newPost = { ...post };
+      let url = urls.get(post.id);
+      if (url) {
+        newPost.videoUrl = url;
+      }
+      return newPost;
+    });
+
+    setPosts(newPosts);
+  }, [props])
+
 
 
   return (
@@ -69,7 +77,7 @@ const Blog: React.FC<Props> = (props) => {
       <div className="page">
         <h1>Public Feed</h1>
         <main>
-          {feed.map((post) => {
+          {posts.map((post) => {
             return (
               <div key={post.id} className="post">
                 <Post post={post} />

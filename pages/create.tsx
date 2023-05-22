@@ -55,7 +55,6 @@ const Draft: React.FC = () => {
         body: formData,
       });
       const res = await response;
-      console.log(res);
       const data = await res.json();
 
       return data;

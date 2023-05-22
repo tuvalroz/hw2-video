@@ -1,10 +1,5 @@
 const mongoose = require('mongoose')
 
-/*if (process.argv.length < 3) {
-    console.log('give password as argument')
-    process.exit(1)
-}*/
-
 const password = "twg2a1fI33KH1Flo";
 const url = `mongodb+srv://tuvalroz:${password}@noamgiladtuvalcluster.qowf5fq.mongodb.net/videoApp?retryWrites=true&w=majority`;
 
