@@ -5,6 +5,7 @@ CREATE TABLE "Post" (
     "content" TEXT,
     "published" BOOLEAN NOT NULL DEFAULT false,
     "authorId" INTEGER,
+    "hasVideo" BOOLEAN NOT NULL DEFAULT false,
     CONSTRAINT "Post_authorId_fkey" FOREIGN KEY ("authorId") REFERENCES "users" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
 
