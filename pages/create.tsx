@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import Layout from "../components/Layout";
 import Router from "next/router";
 import { useSession } from "next-auth/react";
@@ -12,7 +12,12 @@ const Draft: React.FC = () => {
   const [selectedFileFormData, setSelectedFileFormData] = useState<FormData>(new FormData());
   const { data: session, status } = useSession();
   const [isUploading, setIsUploading] = useState(false);
+  const ref: React.RefObject<HTMLInputElement> = useRef<HTMLInputElement>(null);
   let email = session?.user?.email;
+
+  useEffect(() => {
+    ref.current?.focus()
+  }, []);
 
   const submitData = async (e: React.SyntheticEvent) => {
     setIsUploading(true);
@@ -71,7 +76,7 @@ const Draft: React.FC = () => {
         <form onSubmit={submitData}>
           <h1>New Draft</h1>
           <input
-            autoFocus
+            ref={ref}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Title"
             type="text"
